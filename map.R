@@ -76,9 +76,9 @@ leaflet(neon_sites_sf) %>%
                    radius = 1, color = "yellow",
                    opacity = 1, group = "Site Names") %>%
   addLayersControl(baseGroups = c("Esri World Imagery", "NLCD"),
-                   overlayGroups = c("WBD transparent",
+                   overlayGroups = c("Site Names","WBD transparent",
                                      "Aquatic AOP", "Terrestrial AOP",
-                                     "Domains", "Site Names", "AOP centroids"),
+                                     "Domains",  "AOP centroids"),
                    options = layersControlOptions(collapsed = FALSE)) %>%
   hideGroup(group = c("WBD transparent", "AOP centroids"))
             
