@@ -15,7 +15,7 @@ neon_domains <- st_read("data/field-sites") %>%
   st_transform(4326)
 
 # SHAPEFILES
-# aop_path_aq <- "~/Documents/proposals/NSF-EAR/data/NEON_Aquatic_Site_Flight_Box_Shape_Files"
+# aop_path_aq <- "data/NEON_Aquatic_Site_Flight_Box_Shape_Files"
 # aop_files_aq <- fs::dir_ls(aop_path_aq, regexp = ".shp$")
 
 # aop_aqbox_list <- purrr::map(aop_files_aq, ~st_read(.x)) %>% 
