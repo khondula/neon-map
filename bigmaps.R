@@ -1,26 +1,31 @@
 library(mapview)
-
-site_centroids <- all_aops_centroids_sf %>% sf::st_coordinates() %>% as.data.frame()
-
-mp <- leaflet(neon_sites_sf) %>%
-  setView(lng = site_centroids$X[7], lat = site_centroids$Y[7], zoom = 16) %>%
-  addProviderTiles(providers$Esri.WorldImagery, group = "Esri World Imagery") %>%
-  # addMarkers(data = all_aops_centroids_sf, group = "AOP centroids") %>%
-  addPolygons(data = aop_aqbox_sf, fillOpacity = 0, group = "Aquatic AOP",
-              opacity = 1, color = "red") %>%
-  addPolygons(data = aop_terrbox_sf, fillOpacity = 0,
-              opacity = 1, color = "red", group = "Terrestrial AOP")
+library(leaflet)
+library(sf)
+library(readr)
 
 data_dir <- "/nfs/public-data/NEON_workshop_data/bigmaps"
-mapshot(mp, file = paste0(data_dir, "/2map8000.pdf"), vwidth = 8000, vheight = 8000)
 
-mapshot(mp, file = paste0(data_dir, "/map10000.pdf"), vwidth = 10000, vheight = 10000)
+site_centroids <- read_csv("data/site_centroids.csv")
 
+neon_sites_sf <- readr::read_csv("data/field-sitesNEON.csv") %>%
+  sf::st_as_sf(neon_sites, 
+               coords = c('Longitude', 'Latitude'),
+               crs = 4326)
 
-# mapshot(mp, file = paste0(getwd(), "/map.png"), vwidth = 1000, vheight = 1000)
-# mapshot(mp, file = paste0(getwd(), "/map5000.png"), vwidth = 5000, vheight = 5000)
-# 
-# mapshot(mp, file = paste0(getwd(), "/map5000.pdf"), vwidth = 5000, vheight = 5000)
-# mapshot(mp, file = paste0(getwd(), "/map50000.pdf"), vwidth = 50000, vheight = 50000)
-# 
-# mapshot(mp, file = paste0(getwd(), "/map.jpeg"))
+save_bigmap <- function(site_no){
+  
+  mp <- leaflet(neon_sites_sf) %>%
+    setView(lng = site_centroids$X[site_no], 
+            lat = site_centroids$Y[site_no], 
+            zoom = 16) %>%
+    addProviderTiles(providers$Esri.WorldImagery, group = "Esri World Imagery") %>%
+    addPolygons(data = all_aops_sf, fillOpacity = 0, opacity = 1, color = "red") 
+  
+  
+  mapshot(mp, 
+          file = glue::glue("{data_dir}/map_site-{site_no}.pdf"), 
+          vwidth = 12000, vheight = 8000)
+}
+
+save_bigmap(site_no = 1)
+purrr::walk(11:70, ~save_bigmap(.x))
