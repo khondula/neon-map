@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document id="D07_GRSM_R1_P2_all_v1" xsi:schemaLocation="http://www.opengis.net/kml/2.2 http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd http://www.google.com/kml/ext/2.2 http://code.google.com/apis/kml/schema/kml22gx.xsd">
+	<name>D07_GRSM_R1_P2_all_v1</name>
+	<Snippet maxLines="0"></Snippet>
+	<StyleMap id="PolyStyle00573">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#PolyStyle00583</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#PolyStyle00561</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="PolyStyle00561">
+		<LabelStyle>
+			<color>00000000</color>
+			<scale>0</scale>
+		</LabelStyle>
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>ffc9f2ee</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="PolyStyle00583">
+		<LabelStyle>
+			<color>00000000</color>
+			<scale>0</scale>
+		</LabelStyle>
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>ffc9f2ee</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Folder id="FeatureLayer0">
+		<name>D07_GRSM_R1_P2_all_v1</name>
+		<Snippet maxLines="0"></Snippet>
+		<Placemark id="ID_00000">
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td> </td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>FID</td>
+
+<td>0</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Name</td>
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td>Area_km2</td>
+
+<td>42.367</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>]]></description>
+			<styleUrl>#PolyStyle00573</styleUrl>
+			<MultiGeometry>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-83.29841089873547,35.72164580859993,0 -83.30282400574755,35.72255106132036,0 -83.31187653295203,35.72356947063102,0 -83.32873686487019,35.72243790473031,0 -83.33832899890615,35.72092107109908,0 -83.33840011445861,35.70894995309686,0 -83.33838955966246,35.70894995733507,0 -83.33838955966246,35.69525682381946,0 -83.33839816832717,35.6952568199606,0 -83.33840015044298,35.66345625193861,0 -83.33864522378541,35.66336422835155,0 -83.32149484310658,35.66178597246086,0 -83.3126686290825,35.65386501115692,0 -83.30169243984702,35.65510973364769,0 -83.29309253900286,35.65974915383989,0 -83.28947152812114,35.67208322215591,0 -83.27368429786534,35.67865636274259,0 -83.26987444120773,35.68498282196291,0 -83.25931869156918,35.69019079115552,0 -83.2539359583097,35.69560847722826,0 -83.2539359583097,35.70633899093358,0 -83.25159411981387,35.70899540474996,0 -83.25405351543391,35.71542219614698,0 -83.26186132014762,35.71542219614698,0 -83.27362960551336,35.71327222093596,0 -83.2766848334449,35.71417747365639,0 -83.28551104746909,35.7129327511658,0 -83.29841089873547,35.72164580859993,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="ID_00001">
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td> </td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>FID</td>
+
+<td>1</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Name</td>
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td>Area_km2</td>
+
+<td>65.5405</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>]]></description>
+			<styleUrl>#PolyStyle00573</styleUrl>
+			<MultiGeometry>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-83.50875896767948,35.56216903978695,0 -83.50875896767948,35.62806017441076,0 -83.53395223189943,35.62806412938808,0 -83.5339526831598,35.62805706012691,0 -83.61365346912598,35.62805706012691,0 -83.60904596385515,35.58008479936461,0 -83.58543377914056,35.56214366338064,0 -83.50875896767948,35.56216903978695,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</MultiGeometry>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>
