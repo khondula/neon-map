@@ -40,7 +40,8 @@ aop_aqbox_list <- 1:10 %>%
 
 aop_aqbox_sf <- st_as_sf(data.table::rbindlist(aop_aqbox_list)) %>% 
   st_zm() %>%
-  st_transform(32618) %>% st_transform(4326)
+  # st_transform(32618) %>% 
+  st_transform(4326)
 
 # terrestrial sites
 # aquatic sites
@@ -61,11 +62,24 @@ aop_terrbox_list <- 1:55 %>%
 
 aop_terrbox_sf <- st_as_sf(data.table::rbindlist(aop_terrbox_list)) %>% 
   st_zm() %>%
-  st_transform(32618) %>% 
+  # st_transform(32618) %>% 
   st_transform(4326)
 
 all_aops_sf <- rbind(aop_terrbox_sf, aop_aqbox_sf)
-all_aops_centroids_sf <- all_aops_sf %>% st_centroid(all_aops_sf)
+all_aops_centroids_sf <- all_aops_sf %>% 
+  st_centroid(all_aops_sf, of_largest_polygon = TRUE)
+
+# save centroids table
+all_aops_centroids_sf %>% 
+  sf::st_coordinates() %>%
+  as.data.frame() %>%
+  dplyr::mutate(sitename = all_aops_centroids_sf$sitename) %>%
+  readr::write_csv("data/site_centroids.csv")
+
+# all_aops_sf %>%
+#   leaflet() %>%
+#   addTiles() %>%
+#   addPolygons()
 
 # nlcd <- "https://smallscale.nationalmap.gov/arcgis/services/LandCover/MapServer/WMSServer"
 # wbd <- "https://hydro.nationalmap.gov/arcgis/services/wbd/MapServer/WMSServer"
