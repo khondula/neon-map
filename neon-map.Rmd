@@ -38,8 +38,6 @@ download.file(aop_kmz_filepath, destfile = aop_kmz_localfile)
 aop_sf <- sf::st_read(aop_kmz_localfile) %>% 
   st_zm() %>% mutate(sitecode = substr(Name, 1, 8),
                      domain = substr(Name, 1, 3))
-aop_centroids_sf <- aop_sf %>% 
-  st_centroid(aop_sf, of_largest_polygon = TRUE)
 ```
 
 How many sites? 
@@ -48,6 +46,13 @@ How many sites?
 sitecodes <- unique(aop_sf$sitecode)
 length(sitecodes)
 ```
+
+Which sites?
+
+```{r}
+sitecodes
+```
+
 
 Leaflet map of sites
 
