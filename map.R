@@ -3,7 +3,7 @@
 library(leaflet)
 library(sf)
 library(readr)
-
+library(leaflet.extras)
 # Read in neon sites
 neon_sites <- readr::read_csv("data/field-sitesNEON.csv")
 
@@ -12,7 +12,7 @@ neon_sites_sf <- sf::st_as_sf(neon_sites,
                               crs = 4326)
 
 neon_domains <- st_read("data/field-sites") %>% 
-  st_transform(4326)
+  sf::st_transform(4326)
 
 # SHAPEFILES
 # aop_path_aq <- "data/NEON_Aquatic_Site_Flight_Box_Shape_Files"
@@ -81,33 +81,37 @@ all_aops_centroids_sf %>%
 #   addTiles() %>%
 #   addPolygons()
 
-# nlcd <- "https://smallscale.nationalmap.gov/arcgis/services/LandCover/MapServer/WMSServer"
-# wbd <- "https://hydro.nationalmap.gov/arcgis/services/wbd/MapServer/WMSServer"
+nlcd_url <- 'https://www.mrlc.gov/geoserver/mrlc_display/NLCD_2016_Land_Cover_L48/ows'
+nlcd_legend_uri <- 'https://www.mrlc.gov/geoserver/mrlc_display/NLCD_2016_Land_Cover_L48/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=NLCD_2016_Land_Cover_L48'
+
+wbd <- "https://hydro.nationalmap.gov/arcgis/services/wbd/MapServer/WMSServer"
 # 
 # # LEAFLET MAP
-# leaflet(neon_sites_sf) %>%
-#   addProviderTiles(providers$Esri.WorldImagery, group = "Esri World Imagery") %>%
-#   addMarkers(data = all_aops_centroids_sf, group = "AOP centroids") %>%
-#   addWMSTiles(nlcd, layers = "1",
-#               options = WMSTileOptions(format = "image/png", transparent = TRUE),
-#               group = "NLCD") %>%
-#   addWMSTiles(wbd, layers = "7",
-#               options = WMSTileOptions(format = "image/png", transparent = TRUE),
-#               group = "WBD transparent") %>%
-#   addPolygons(data = neon_domains, fillOpacity = 0, opacity = 1, weight = 0.5,
-#               color = "white", group = "Domains") %>%
-#   addPolygons(data = aop_aqbox_sf, fillOpacity = 0, group = "Aquatic AOP",
-#               opacity = 1, color = "red") %>%
-#   addPolygons(data = aop_terrbox_sf, fillOpacity = 0,
-#               opacity = 1, color = "red", group = "Terrestrial AOP") %>%
-#   addCircleMarkers(data = neon_sites_sf, 
-#                    label = ~as.character(`Site Name`), 
-#                    radius = 1, color = "yellow",
-#                    opacity = 1, group = "Site Names") %>%
-#   addLayersControl(baseGroups = c("Esri World Imagery", "NLCD"),
-#                    overlayGroups = c("Site Names","WBD transparent",
-#                                      "Aquatic AOP", "Terrestrial AOP",
-#                                      "Domains",  "AOP centroids"),
-#                    options = layersControlOptions(collapsed = FALSE)) %>%
-#   hideGroup(group = c("WBD transparent", "AOP centroids"))
+leaflet(neon_sites_sf) %>%
+  addProviderTiles(providers$Esri.WorldImagery, group = "Esri World Imagery") %>%
+  addMarkers(data = all_aops_centroids_sf, group = "AOP centroids") %>%
+  addWMSTiles(nlcd_url, layers = "NLCD_2016_Land_Cover_L48",
+              options = WMSTileOptions(format = "image/png", transparent = TRUE),
+              group = "NLCD") %>%
+  # addWMSLegend(nlcd_legend_uri, group = "NLCD legend") %>%
+  addWMSTiles(wbd, layers = "7",
+              options = WMSTileOptions(format = "image/png", transparent = TRUE),
+              group = "WBD transparent") %>%
+  addPolygons(data = neon_domains, fillOpacity = 0, opacity = 1, weight = 0.5,
+              color = "white", group = "Domains") %>%
+  addPolygons(data = aop_aqbox_sf, fillOpacity = 0, group = "Aquatic AOP",
+              opacity = 1, color = "red") %>%
+  addPolygons(data = aop_terrbox_sf, fillOpacity = 0,
+              opacity = 1, color = "red", group = "Terrestrial AOP") %>%
+  addCircleMarkers(data = neon_sites_sf,
+                   label = ~as.character(`Site Name`),
+                   radius = 1, color = "yellow",
+                   opacity = 1, group = "Site Names") %>%
+  addLayersControl(baseGroups = c("Esri World Imagery", "NLCD"),
+                   overlayGroups = c("Site Names","WBD transparent",
+                                     # "NLCD legend",
+                                     "Aquatic AOP", "Terrestrial AOP",
+                                     "Domains",  "AOP centroids"),
+                   options = layersControlOptions(collapsed = FALSE)) %>%
+  hideGroup(group = c("WBD transparent", "AOP centroids"))
             
